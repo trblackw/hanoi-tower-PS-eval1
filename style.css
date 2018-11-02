@@ -12,6 +12,7 @@ body {
   margin: 2.5em auto;
   width: 75%;
   background: hsl(19, 100%, 64%);
+  border-radius: 8px;
 }
 
 .peg {
@@ -25,4 +26,42 @@ span {
   border: 1px solid black;
   background: whitesmoke;
   position: relative;
+}
+
+#user-input {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+label {
+  margin: 0 0.7em;
+  display: inline-block;
+  font-weight: bolder;
+}
+
+input {
+  padding: 0.3em;
+  border-radius: 5px;
+}
+
+button#submit-move {
+  margin-left: 1.2em;
+  background: hsl(19, 100%, 64%);
+  color: black;
+  padding: 0.5em;
+  border: none;
+  font-size: 0.9em;
+  border-radius: 4px;
+}
+
+.shadow {
+  position: relative;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }

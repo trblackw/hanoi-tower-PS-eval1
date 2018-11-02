@@ -5,20 +5,20 @@ const submitButton = document.querySelector("button");
 const startPegInput = document.querySelector("input[name=start]");
 const endPegInput = document.querySelector("input[name=end]");
 
-var Board = function() {
-  var set = [[5, 4, 3, 2, 1], [], []];
-  var moves = {
+const Board = () => {
+  const set = [[5, 4, 3, 2, 1], [], []];
+  const moves = {
     count: 0
   };
 
-  var incrementMoves = function() {
+  const incrementMoves = () => {
     moves.count = moves.count + 1;
   };
 
-  var checkAvailableMoves = function(peg) {
-    var selectedPeg = set[peg - 1];
-    var topDisc = Number(selectedPeg) || Number(selectedPeg[selectedPeg - 1]);
-    var availableMoves = [];
+  const checkAvailableMoves = peg => {
+    const selectedPeg = set[peg - 1];
+    const topDisc = Number(selectedPeg) || Number(selectedPeg[selectedPeg - 1]);
+    const availableMoves = [];
     if (selectedPeg.length === 0) {
       availableMoves = set.filter(arr => arr.length > 0);
     } else {
@@ -31,13 +31,13 @@ var Board = function() {
     return availableMoves;
   };
 
-  var printBoard = function() {
+  const printBoard = () => {
     //prints board horizontally
-    var horizontal = function() {
+    const horizontal = () => {
       return set.map(row => row);
     };
     //prints board vertically
-    var vertical = function() {
+    const vertical = () => {
       return set[0].map((x, row) => set.map(y => x[row]));
     };
 
@@ -47,17 +47,13 @@ var Board = function() {
     };
   };
 
-  var moveDisc = function(startPeg, endPeg) {
+  const moveDisc = (startPeg, endPeg) => {
     //check to make sure peg is in valid range
     if (startPeg > 3 || (endPeg > 3 && (startPeg > 0 && endPeg > 0))) {
       return "invalid move!";
     }
-    var pegToMove = set[startPeg - 1];
-    var pegToReceive = set[endPeg - 1];
-
-    //  var complete =
-    //    set.filter(peg => peg !== pegToReceive).filter(arr => arr.length === 0)
-    //      .length === 2;
+    const pegToMove = set[startPeg - 1];
+    const pegToReceive = set[endPeg - 1];
 
     //check to make sure disc to stack on top is smaller than the disc below it
     if (
@@ -66,19 +62,26 @@ var Board = function() {
       alert(
         "invalid move, the disc you're trying to stack on top is larger than the one below it"
       );
-    } else if (complete) {
-      alert(`Congrats! You won in ${moves.count} moves`);
     } else {
-      var discToMove = pegToMove.pop();
+      const discToMove = pegToMove.pop();
       pegToReceive.push(discToMove);
       incrementMoves();
-      var complete =
+      // const reduceComplete = pegToReceive.reduce((arr, disc) => {
+      //   let i = 0;
+      //   if (disc === 5) {
+      //     arr.push(disc);
+      //     i++;
+      //   }
+      //   return arr;
+      // }, []);
+      // console.log(reduceComplete);
+      // console.log(pegToReceive);
+      const complete =
         set.filter(peg => peg !== pegToReceive).filter(arr => arr.length === 0)
           .length === 2;
       return complete
         ? alert(`Congrats! You won in ${moves.count} moves`)
         : null;
-      console.log(moves);
     }
   };
 
@@ -93,7 +96,7 @@ var Board = function() {
   };
 };
 
-var board = Board();
+const board = Board();
 
 // submitButton.addEventListener("click", () => {
 //   board.move(startPegInput.value, endPegInput.value);
@@ -108,7 +111,7 @@ var board = Board();
 //   (startPegInput.value = ""), (endPegInput.value = "");
 // });
 
-var [firstPeg, secondPeg, thirdPeg] = board.stats.set;
+const [firstPeg, secondPeg, thirdPeg] = board.stats.set;
 
 //winning run
 board.move(1, 2);
@@ -141,12 +144,12 @@ board.move(2, 3);
 board.move(1, 2);
 board.move(3, 1);
 board.move(3, 2);
-board.move(1, 2);
+// board.move(1, 2);
 
 //make copies to not mutate state
-var firstPegCopy = firstPeg.slice(0);
-var secondPegCopy = secondPeg.slice(0);
-var thirdPegCopy = thirdPeg.slice(0);
+const firstPegCopy = firstPeg.slice(0);
+const secondPegCopy = secondPeg.slice(0);
+const thirdPegCopy = thirdPeg.slice(0);
 
 discSet1.innerHTML = firstPegCopy
   .reverse()

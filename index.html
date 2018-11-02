@@ -10,28 +10,35 @@
 </head>
 
 <body>
-   <div id="board">
+   <div id="board" class="shadow">
       <div class="peg" id="peg-1">
          <h1>Peg 1</h1>
-         <div id="disc-1">
+         <div id="disc-1" class="discs">
 
          </div>
       </div>
       <div class="peg" id="peg-2">
          <h1>Peg 2</h1>
-         <div id="disc-2">
+         <div id="disc-2" class="discs">
 
          </div>
 
       </div>
-      <div class="peg" id="peg-2">
+      <div class="peg" id="peg-2" class="discs">
          <h1>Peg 3</h1>
-         <div id="disc-3">
+         <div id="disc-3" class="discs">
 
          </div>
       </div>
-
    </div>
+   <div id="user-input">
+      <label for="start">Start Peg</label>
+      <input type="number" name="start">
+      <label for="end">End Peg</label>
+      <input type="number" name="end">
+      <button id="submit-move">Go!</button>
+   </div>
+
 
    <script src="main.js"></script>
 </body>
