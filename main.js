@@ -6,7 +6,7 @@ const startPegInput = document.querySelector("input[name=start]");
 const endPegInput = document.querySelector("input[name=end]");
 
 const Board = () => {
-  const set = [[5, 4, 3, 2, 1], [], []];
+  let set = [[5, 4, 3, 2, 1], [], []];
   const moves = {
     count: 0
   };
@@ -79,9 +79,9 @@ const Board = () => {
       const complete =
         set.filter(peg => peg !== pegToReceive).filter(arr => arr.length === 0)
           .length === 2;
-      return complete
-        ? alert(`Congrats! You won in ${moves.count} moves`)
-        : null;
+      if (complete) {
+        alert(`Congrats! You won in ${moves.count} moves`);
+      }
     }
   };
 
@@ -98,52 +98,52 @@ const Board = () => {
 
 const board = Board();
 
-// submitButton.addEventListener("click", () => {
-//   board.move(startPegInput.value, endPegInput.value);
-//   const discs = [...document.querySelectorAll(".discs")];
-//   // console.log(discs[endPegInput.value - 1]);
-//   discs[endPegInput.value - 1].innerHTML = board.stats.set[
-//     endPegInput.value - 1
-//   ]
-//     .map(disc => `<span>${disc}</span>`)
-//     .join("");
+submitButton.addEventListener("click", () => {
+  board.move(startPegInput.value, endPegInput.value);
+  const discs = [...document.querySelectorAll(".discs")];
+  // console.log(discs[endPegInput.value - 1]);
+  discs[endPegInput.value - 1].innerHTML = board.stats.set[
+    endPegInput.value - 1
+  ]
+    .map(disc => `<span>${disc}</span>`)
+    .join("");
 
-//   (startPegInput.value = ""), (endPegInput.value = "");
-// });
+  (startPegInput.value = ""), (endPegInput.value = "");
+});
 
 const [firstPeg, secondPeg, thirdPeg] = board.stats.set;
 
 //winning run
-board.move(1, 2);
-board.move(1, 3);
-board.move(2, 3);
-board.move(1, 2);
-board.move(3, 1);
-board.move(3, 2);
-board.move(1, 2);
-board.move(1, 3);
-board.move(2, 3);
-board.move(2, 1);
-board.move(3, 1);
-board.move(2, 3);
-board.move(1, 2);
-board.move(1, 3);
-board.move(2, 3);
-board.move(1, 2);
-board.move(3, 1);
-board.move(3, 2);
-board.move(1, 2);
-board.move(3, 1);
-board.move(2, 3);
-board.move(2, 1);
-board.move(3, 1);
-board.move(3, 2);
-board.move(1, 2);
-board.move(1, 3);
-board.move(2, 3);
-board.move(1, 2);
-board.move(3, 1);
-board.move(3, 2);
+// board.move(1, 2);
+// board.move(1, 3);
+// board.move(2, 3);
+// board.move(1, 2);
+// board.move(3, 1);
+// board.move(3, 2);
+// board.move(1, 2);
+// board.move(1, 3);
+// board.move(2, 3);
+// board.move(2, 1);
+// board.move(3, 1);
+// board.move(2, 3);
+// board.move(1, 2);
+// board.move(1, 3);
+// board.move(2, 3);
+// board.move(1, 2);
+// board.move(3, 1);
+// board.move(3, 2);
+// board.move(1, 2);
+// board.move(3, 1);
+// board.move(2, 3);
+// board.move(2, 1);
+// board.move(3, 1);
+// board.move(3, 2);
+// board.move(1, 2);
+// board.move(1, 3);
+// board.move(2, 3);
+// board.move(1, 2);
+// board.move(3, 1);
+// board.move(3, 2);
 // board.move(1, 2);
 
 //make copies to not mutate state
