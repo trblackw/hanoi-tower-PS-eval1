@@ -81,6 +81,10 @@ const Board = () => {
           .length === 2;
       if (complete) {
         alert(`Congrats! You won in ${moves.count} moves`);
+        const winningPeg = set.filter(peg => peg.length === 5);
+        //reset board
+         set = [...winningPeg, [], []];
+         console.log(set);
       }
     }
   };
@@ -114,37 +118,37 @@ submitButton.addEventListener("click", () => {
 const [firstPeg, secondPeg, thirdPeg] = board.stats.set;
 
 //winning run
-// board.move(1, 2);
-// board.move(1, 3);
-// board.move(2, 3);
-// board.move(1, 2);
-// board.move(3, 1);
-// board.move(3, 2);
-// board.move(1, 2);
-// board.move(1, 3);
-// board.move(2, 3);
-// board.move(2, 1);
-// board.move(3, 1);
-// board.move(2, 3);
-// board.move(1, 2);
-// board.move(1, 3);
-// board.move(2, 3);
-// board.move(1, 2);
-// board.move(3, 1);
-// board.move(3, 2);
-// board.move(1, 2);
-// board.move(3, 1);
-// board.move(2, 3);
-// board.move(2, 1);
-// board.move(3, 1);
-// board.move(3, 2);
-// board.move(1, 2);
-// board.move(1, 3);
-// board.move(2, 3);
-// board.move(1, 2);
-// board.move(3, 1);
-// board.move(3, 2);
-// board.move(1, 2);
+board.move(1, 2);
+board.move(1, 3);
+board.move(2, 3);
+board.move(1, 2);
+board.move(3, 1);
+board.move(3, 2);
+board.move(1, 2);
+board.move(1, 3);
+board.move(2, 3);
+board.move(2, 1);
+board.move(3, 1);
+board.move(2, 3);
+board.move(1, 2);
+board.move(1, 3);
+board.move(2, 3);
+board.move(1, 2);
+board.move(3, 1);
+board.move(3, 2);
+board.move(1, 2);
+board.move(3, 1);
+board.move(2, 3);
+board.move(2, 1);
+board.move(3, 1);
+board.move(3, 2);
+board.move(1, 2);
+board.move(1, 3);
+board.move(2, 3);
+board.move(1, 2);
+board.move(3, 1);
+board.move(3, 2);
+board.move(1, 2);
 
 //make copies to not mutate state
 const firstPegCopy = firstPeg.slice(0);
